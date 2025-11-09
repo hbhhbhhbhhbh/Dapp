@@ -1,0 +1,291 @@
+.service-center {
+  padding: 2rem;
+}
+
+.service-center-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.service-center h2 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.refresh-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.refresh-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: white;
+}
+
+.refresh-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.search-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+  display: flex;
+  gap: 1rem;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.search-box button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-box button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.search-box button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.claims-summary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.claims-summary p {
+  color: white;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.claims-summary strong {
+  color: #fbbf24;
+  font-size: 1.2rem;
+}
+
+.pending-count {
+  color: #fef3c7 !important;
+}
+
+.pending-count strong {
+  color: #fbbf24 !important;
+}
+
+.claims-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.empty-claims {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.empty-claims p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.empty-claims .hint {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.claim-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.claim-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.claim-header h3 {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.status-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.status-badge.pending {
+  background: #f59e0b;
+  color: white;
+}
+
+.status-badge.approved {
+  background: #10b981;
+  color: white;
+}
+
+.status-badge.rejected {
+  background: #ef4444;
+  color: white;
+}
+
+.claim-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.claim-info p {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.claim-info strong {
+  color: #333;
+  margin-right: 0.5rem;
+}
+
+.claim-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.approve-button,
+.reject-button {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.approve-button {
+  background: #10b981;
+  color: white;
+}
+
+.reject-button {
+  background: #ef4444;
+  color: white;
+}
+
+.approve-button:hover:not(:disabled),
+.reject-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.approve-button:disabled,
+.reject-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.service-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #f0f0f0;
+}
+
+.service-section textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+}
+
+.service-section textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.record-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.record-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.record-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

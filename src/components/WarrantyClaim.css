@@ -1,0 +1,81 @@
+.warranty-claim {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.warranty-claim h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.claim-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.claim-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.claim-form label {
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.claim-form input,
+.claim-form textarea {
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.claim-form input:focus,
+.claim-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.claim-form input:disabled,
+.claim-form textarea:disabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.required {
+  color: #ef4444;
+}
+
+.claim-form .submit-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.claim-form .submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.claim-form .submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

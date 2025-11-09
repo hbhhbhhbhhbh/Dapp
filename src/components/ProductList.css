@@ -1,0 +1,146 @@
+.product-list {
+  padding: 2rem;
+}
+
+.product-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.product-list h2 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.search-box input {
+  padding: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(10px);
+  min-width: 200px;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search-box button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.search-box button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: white;
+}
+
+.search-box button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refresh-button {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.product-header h3 {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.warranty-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.warranty-badge.active {
+  background: #10b981;
+  color: white;
+}
+
+.warranty-badge.inactive {
+  background: #ef4444;
+  color: white;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-info p {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.product-info strong {
+  color: #333;
+  margin-right: 0.5rem;
+}
+
+.loading, .empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
