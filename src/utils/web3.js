@@ -56,3 +56,16 @@ export const getDaysRemaining = (expirationTimestamp) => {
   return Math.max(0, Math.floor(remaining / 86400));
 };
 
+
+
+export const getSerialHash = (serialNumber) => {
+  if (!serialNumber) return ethers.ZeroHash;
+  
+  // 关键步骤：先转换为 UTF-8 字节，再计算哈希
+  const bytes = ethers.toUtf8Bytes(serialNumber); 
+  // console.log(bytes);
+  // 返回标准的 0x... 格式的十六进制字符串
+  return ethers.keccak256(
+    ethers.toUtf8Bytes(serialNumber)
+);
+};

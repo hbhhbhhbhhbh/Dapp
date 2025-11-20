@@ -22,9 +22,11 @@ const ProductList = ({ signer, account, roles }) => {
       let ids = [];
       try {
         const balance = await contract.balanceOf(account);
+        console.log(balance);
         for (let i = 0; i < Number(balance); i++) {
           try {
             const tokenId = await contract.tokenOfOwnerByIndex(account, i);
+            console.log(tokenId);
             ids.push(Number(tokenId));
           } catch (error) {
             if (error.message && error.message.includes('tokenOfOwnerByIndex')) {
@@ -120,7 +122,7 @@ const ProductList = ({ signer, account, roles }) => {
     try {
       const contract = getContract(signer);
       const owner = await contract.ownerOf(searchTokenId);
-      
+      console.log(owner);
       // Check if product belongs to current user
       if (owner.toLowerCase() !== account.toLowerCase()) {
         alert('This is not your product');
@@ -130,7 +132,7 @@ const ProductList = ({ signer, account, roles }) => {
       
       const details = await contract.getProductDetails(searchTokenId);
       const isActive = await contract.isWarrantyActive(searchTokenId);
-      
+      console.log(details);
       // Parse product details
       const parseValue = (value) => {
         if (value === null || value === undefined) return 0;

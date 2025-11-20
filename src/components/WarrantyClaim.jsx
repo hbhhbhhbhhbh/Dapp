@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getContract } from '../utils/web3';
+import { getContract,getSerialHash } from '../utils/web3';
 import './WarrantyClaim.css';
 
 const WarrantyClaim = ({ signer, account }) => {
@@ -29,7 +29,7 @@ const WarrantyClaim = ({ signer, account }) => {
       // Get tokenId by serial number
       let tokenId;
       try {
-        tokenId = await contract.tokenIdForSerialNumber(serialNumber);
+        tokenId = await contract.tokenIdForSerialHash(getSerialHash(serialNumber));
       } catch (error) {
         alert('Product not found with this serial number, please check if the serial number is correct');
         setLoading(false);

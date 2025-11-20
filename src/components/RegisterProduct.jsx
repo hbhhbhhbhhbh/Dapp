@@ -7,10 +7,15 @@ const RegisterProduct = ({ signer, onSuccess }) => {
     initialOwner: '',
     serialNumber: '',
     model: '',
-    warrantyDuration: '',
+    warrantyDuration: '', // Days
     claimLimit: ''
   });
   const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,19 +24,27 @@ const RegisterProduct = ({ signer, onSuccess }) => {
     try {
       const contract = getContract(signer);
       
-      // Convert warranty duration from days to seconds
-      const warrantyDurationInSeconds = BigInt(formData.warrantyDuration) * BigInt(86400);
-      
+      // ✅ 优化修改点：将保修期从天转换为秒，并确保所有数字参数都使用 BigInt 
+      // 智能合约需要 uint64 和 uint32
+      const warrantyDurationInSeconds = BigInt(formData.warrantyDuration) * BigInt(86400); // 1 day = 86400 seconds
+      const claimLimitBigInt = BigInt(formData.claimLimit);
+
+      console.log(formData);
+      console.log(warrantyDurationInSeconds);
+      console.log(claimLimitBigInt);
+      // ✅ 传递正确的 BigInt 参数
       const tx = await contract.registerProduct(
         formData.initialOwner,
         formData.serialNumber,
         formData.model,
-        warrantyDurationInSeconds,
-        formData.claimLimit
+        warrantyDurationInSeconds, // uint64
+        claimLimitBigInt          // uint32
       );
       
+      console.log(tx);
       await tx.wait();
       alert('Product registered successfully!');
+      
       setFormData({
         initialOwner: '',
         serialNumber: '',
@@ -48,19 +61,16 @@ const RegisterProduct = ({ signer, onSuccess }) => {
     }
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  // 确保 manufacturer 角色才能使用此功能
+  // const isManufacturer = roles?.isManufacturer; 
+  // if (!isManufacturer) return <div className="register-product">Not Authorized: Only Manufacturer role can register products.</div>;
 
   return (
     <div className="register-product">
       <h2>Register New Product</h2>
-      <form onSubmit={handleSubmit} className="product-form">
+      <form onSubmit={handleSubmit} className="register-form">
         <div className="form-group">
-          <label>Initial Owner Address (Retailer):</label>
+          <label>Initial Owner (Retailer Address):</label>
           <input
             type="text"
             name="initialOwner"
@@ -68,6 +78,7 @@ const RegisterProduct = ({ signer, onSuccess }) => {
             onChange={handleChange}
             placeholder="0x..."
             required
+            className="address-input"
           />
         </div>
         
@@ -130,4 +141,3 @@ const RegisterProduct = ({ signer, onSuccess }) => {
 };
 
 export default RegisterProduct;
-

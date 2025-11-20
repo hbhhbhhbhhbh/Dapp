@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getContract, formatAddress } from '../utils/web3';
+import { getContract, formatAddress, getSerialHash } from '../utils/web3';
 import './SellProduct.css';
 
 const SellProduct = ({ signer, account, roles }) => {
@@ -12,6 +12,7 @@ const SellProduct = ({ signer, account, roles }) => {
 
   useEffect(() => {
     if (signer && account && roles?.isRetailer) {
+      console.log(signer, account, roles);
       loadAvailableProducts();
     }
   }, [signer, account, roles]);
@@ -24,12 +25,12 @@ const SellProduct = ({ signer, account, roles }) => {
       // Query all ProductRegistered events
       const productFilter = contract.filters.ProductRegistered();
       const productEvents = await contract.queryFilter(productFilter);
-      
+      console.log(productEvents);
       // Get details of all products and filter those belonging to current retailer with unactivated warranty
       const productPromises = productEvents.map(async (event) => {
         try {
           const tokenId = Number(event.args.tokenId);
-          
+          console.log(tokenId);
           // Check if product belongs to current retailer
           const owner = await contract.ownerOf(tokenId);
           if (owner.toLowerCase() !== account.toLowerCase()) {
@@ -103,11 +104,18 @@ const SellProduct = ({ signer, account, roles }) => {
     setLoading(true);
     try {
       const contract = getContract(signer);
-      
+      console.log(contract);
       // Get tokenId by serial number
       let tokenId;
       try {
-        tokenId = await contract.tokenIdForSerialNumber(serialNumber);
+        console.log(serialNumber);
+        console.log(getSerialHash(serialNumber));
+        const serialHash = getSerialHash(serialNumber);
+        console.log(serialHash);
+        
+        tokenId = await contract.tokenIdForSerialHash(getSerialHash(serialNumber));
+
+        // console.log(tokenId);
       } catch (error) {
         alert('Product not found with this serial number, please check if the serial number is correct');
         setLoading(false);
