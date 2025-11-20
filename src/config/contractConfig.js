@@ -1,6 +1,6 @@
 // Contract Configuration
 // Please replace CONTRACT_ADDRESS with your deployed contract address
-export const CONTRACT_ADDRESS = '0xAeBf7aD61F0a81320f7a703620315E06f8b10D04'; // Please replace with your actual deployed contract address
+export const CONTRACT_ADDRESS = '0x0DE79677227D79b70dC03aBD8339DA01d1dF1d16'; // Please replace with your actual deployed contract address
 
 // ABI - Get from the compiled contract JSON file
 export const CONTRACT_ABI = [
